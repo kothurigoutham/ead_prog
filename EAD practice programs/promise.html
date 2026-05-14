@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <script>
+     let mypromise= new Promise(function(resolve,reject){
+        let success=true;
+        if(success){
+            resolve("operation successfull");
+        }else{
+            reject("operation failed");
+        }
+     });
+     mypromise
+     .then(function(result){
+        document.write(result+"<br>");
+     })
+     .catch(function(error){
+        document.write(error);
+     });
+
+
+
+    </script>
+</body>
+</html>

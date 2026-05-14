@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+          function greet(name,callback){
+          console.log("hello"+name);
+          callback();
+
+          }
+          function calledfun(){
+            console.log("callback seccussfully executed");
+
+          }
+         greet("goutham",calledfun)
+    </script>
+</body>
+</html>

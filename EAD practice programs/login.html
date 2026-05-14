@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+</head>
+<body>
+
+<h2>Login Form</h2>
+   
+username :<input type ="text" id ="username" name = "username:"><br><br> 
+password :<input type ="password" id="password" name ="password"><br><br>
+  <button onclick="check()">Login</button>
+
+<script>
+     function check(){
+        let u= document.getElementById("username").value;
+        let p= document.getElementById("password").value;
+       
+        if(u=="" || p==""){
+            alert("enter your credentials correctly");
+           // return false;
+        }else{
+            alert("login successful");
+           // return true;
+        }
+
+     }  
+        </script>
+ 
+
+</body>
+</html>

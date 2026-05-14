@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables and Data Types</title>
+</head>
+<body>
+
+<h2>Check Console for Output</h2>
+
+<script>
+    // var example
+    var x = 10;
+    var x = 20; // redeclaration allowed
+
+    // let example
+    let y = "Hello";
+    y = "World"; // update allowed
+
+    // const example
+    const z = true;
+
+    // Data Types
+    let num = 100;                  // Number
+    let str = "JavaScript";         // String
+    let bool = false;               // Boolean
+    let obj = {name: "Goutham"};   // Object
+    let arr = [1, 2, 3, 4];         // Array
+
+    console.log("var x:", x);
+    console.log("let y:", y);
+    console.log("const z:", z);
+
+    console.log("Number:", num);
+    console.log("String:", str);
+    console.log("Boolean:", bool);
+    console.log("Object:", obj);
+    console.log("Array:", arr);
+
+    // Scope demonstration
+    if(true){
+        var a = 1;
+        let b = 2;
+    }
+
+    console.log("var a:", a); // works
+    // console.log("let b:", b); // error
+</script>
+
+</body>
+</html>

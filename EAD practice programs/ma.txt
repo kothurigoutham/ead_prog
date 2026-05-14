@@ -1,0 +1,6 @@
+for the stockmarket project::
+ --->\backend (1)"
+         npx supabase start
+---->frontend 
+         npm install
+         npm run dev 

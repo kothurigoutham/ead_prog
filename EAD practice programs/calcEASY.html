@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+
+<h3>Goutham - Simple Calculator</h3>
+
+<input type="text" id="result" readonly><br><br>
+
+<button onclick="addValue('1')">1</button>
+<button onclick="addValue('2')">2</button>
+<button onclick="addValue('3')">3</button>
+<button onclick="addValue('+')">+</button><br><br>
+
+<button onclick="addValue('4')">4</button>
+<button onclick="addValue('5')">5</button>
+<button onclick="addValue('6')">6</button>
+<button onclick="addValue('-')">-</button><br><br>
+
+<button onclick="addValue('7')">7</button>
+<button onclick="addValue('8')">8</button>
+<button onclick="addValue('9')">9</button>
+<button onclick="addValue('*')">*</button><br><br>
+
+<button onclick="clearResult()">C</button>
+<button onclick="addValue('0')">0</button>
+<button onclick="calculate()">=</button>
+<button onclick="addValue('/')">/</button>
+
+<script>
+function addValue(val){
+    document.getElementById("result").value += val;
+}
+
+function clearResult(){
+    document.getElementById("result").value = "";
+}
+
+function calculate(){
+    document.getElementById("result").value = eval(document.getElementById("result").value);
+}
+</script>
+
+</body>
+</html>

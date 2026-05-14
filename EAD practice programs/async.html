@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <script>
+    function mypromise(){
+        return new  Promise(function(resolve,reject){
+            let success=false
+        if(success){
+            resolve("operation completed ");
+        }else{
+            reject("operation failed");
+            }
+      });
+        }
+
+async function checkpromise(){
+    try{
+        let result= await mypromise();
+        document.write(result+"<br>");
+    }
+    catch(error){
+  document .write(error);
+    }
+}
+checkpromise();
+</script>
+</body>
+</html>
