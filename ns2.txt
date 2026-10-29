@@ -1,0 +1,62 @@
+# 1. Create a simulator object
+set ns [new Simulator]
+
+# 2. Open trace and nam files
+set tracefile [open out.tr w]
+$ns trace-all $tracefile
+
+set namfile [open out.nam w]
+$ns namtrace-all $namfile
+
+# 3. Define a finish procedure
+proc finish {} {
+    global ns tracefile namfile
+    $ns flush-trace
+    close $tracefile
+    close $namfile
+    exec nam out.nam &
+    exit 0
+}
+
+# 4. Enable Distance Vector routing protocol
+$ns rtproto DV
+
+# 5. Create network nodes (e.g., 4 nodes)
+set n0 [$ns node]
+set n1 [$ns node]
+set n2 [$ns node]
+set n3 [$ns node]
+
+# 6. Create duplex links between nodes
+$ns duplex-link $n0 $n1 1Mb 10ms DropTail
+$ns duplex-link $n1 $n2 1Mb 10ms DropTail
+$ns duplex-link $n2 $n3 1Mb 10ms DropTail
+$ns duplex-link $n0 $n3 5Mb 10ms DropTail
+
+# 7. Setup UDP agent and CBR traffic source
+set udp [new Agent/UDP]
+$ns attach-agent $n0 $udp
+
+set cbr [new Application/Traffic/CBR]
+$cbr set packetSize_ 500
+$cbr set interval_ 0.05
+$cbr attach-agent $udp
+
+set null [new Agent/Null]
+$ns attach-agent $n3 $null
+
+$ns connect $udp $null
+
+# 8. Simulate a link failure / route change
+$ns rtmodel-at 1.0 down $n1 $n2
+$ns rtmodel-at 2.0 up $n1 $n2
+
+# 9. Schedule traffic start and stop
+$ns at 0.1 "$cbr start"
+$ns at 4.5 "$cbr stop"
+
+# 10. Schedule simulation end
+$ns at 5.0 "finish"
+
+# Run the simulation
+$ns run
